@@ -1,19 +1,11 @@
-# cms-ars3.1-windows_2012r2_memberserver_stig_baseline
-CMS ARS 3.1 Overlay InSpec Validation Profile for the Windows 2012r2 Member Server DISA STIG Benchmark
+# cms-ars3.1-microsoft-windows_2012r2-memberserver-stig-overlay
+CMS ARS 3.1 Overlay InSpec Validation Profile for the Microsoft Windows 2012r2 Member Server DISA STIG Benchmark.
 
-This InSpec Profile is based on the Windows 2012r2 Member Server DISA STIG.
-
-## Description (as shown on the baseline profile repo):
-
-This [InSpec](https://github.com/chef/inspec) compliance profile validates the security settings in the Windows 2012r2 Member Server DISA STIG in an automated way.
-
-InSpec is an open-source run-time framework and rule language used to specify compliance, security, and policy requirements for testing any node in your infrastructure.
-
-This profile is based on the [Windows 2012r2 Member Server DISA STIG](https://iase.disa.mil/stigs/os/windows/Pages/2012.aspx)
+This InSpec Profile is based on the Microsoft Windows 2012r2 Member Server DISA STIG.
 
 ## Description
 
-This [InSpec](https://github.com/chef/inspec) compliance profile validates the security settings in the RSA Archer Security Configuration Guide in an automated way.
+This [InSpec](https://github.com/chef/inspec) compliance profile validates the security settings in the Microsoft Windows 2012r2 Member Server DISA STIG in an automated way. The values of the security settings conform to CMS ARS 3.1.
 
 InSpec is an open-source run-time framework and rule language used to specify compliance, security, and policy requirements for testing any node in your infrastructure.
 
@@ -56,11 +48,11 @@ $ . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -channel 
 #### After Install
 Once InSpec is installed, run `inspec version` to verify that the installation was successful.
   
-### Get the RSA Archer Security Configuration Guide Baseline
+### Get the Microsoft Windows 2012r2 Member Server Baseline
 
 You will need to download the InSpec Profile to your `runner` system. You can do this via `git` or the GitHub Web interface, etc.
 
-  a. `git clone https://github.com/mitre/rsa-archer-security-configuration-guide-baseline`, or 
+  a. `git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline`, or 
   
   b. Save a Zip or tar.gz copy of the master branch from the `Clone or Download` button of this project
 
@@ -101,7 +93,7 @@ InSpec makes it easy to run your tests wherever you need. More options listed he
 
 ```
 # Clone Inspec Profile
-$ git clone https://github.com/mitre/rsa-archer-security-configuration-guide-baseline
+$ git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline
 
 # Install Gems
 $ bundle install
@@ -129,10 +121,24 @@ $ inspec exec /path/to/profile --controls rsa-archer-1.1
 - Eugene Aronne [ejaronne](https://github.com/ejaronne)
 - Aaron Lippold [aaronlippold](https://github.com/aaronlippold)
 
-## License and Author
-
 ### Authors
 
-- Author: Rony Xavier [rx294](https://github.com/rx294)
+- Author: Alicia Sturtevant
+
+### License
+This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
 
 ### NOTICE
+© 2018 The MITRE Corporation.
+
+Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
+
+### NOTICE
+This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.
+
+No other use other than that granted to the U. S. Government, or to those acting on behalf of the U. S. Government under that Clause is authorized without the express written permission of The MITRE Corporation.
+
+For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA 22102-7539, (703) 983-6000.
+
+### NOTICE
+DISA STIGs are published by DISA IASE, see: https://iase.disa.mil/Pages/privacy_policy.aspx
