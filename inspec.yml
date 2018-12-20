@@ -1,15 +1,15 @@
 name: cms-ars3.1-windows_2012r2_memberserver_stig_baseline
 title: cms-ars3.1-windows_2012r2_memberserver_stig_baseline
 maintainer: CMS InSpec Dev team
-copyright: 
-copyright_email: 
+copyright: (c) 2018 THE MITRE Corporation
+copyright_email: inspec@mitre.org
 license: Apache-2.0
 summary: "CMS ARS3.1 Overlay against Windows 2012r2 Member Server DISA STIG InSpec Profile"
 version: 0.1.0
 
 depends:
-- name: windows_2012r2_memberserver_stig_baselinee
-  git: https://github.com/mitre/windows_2012r2_memberserver_stig_baseline.git
+- name: microsoft-windows-2012r2-memberserver-stig-baseline
+  git: https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline.git
   branch: master
 
 attributes:

@@ -1,97 +1,130 @@
 # encoding: utf-8
 
-include_controls 'archer-baseline' do
+include_controls 'microsoft-windows-2012r2-memberserver-stig-baseline' do
 
   control 'V-1089' do
-    desc 'check', 'If the following registry value does not exist or is not configured as specified, this is a finding:
+    desc 'check', 'If the following registry value does not exist or is not 
+         configured as specified, this is a finding:
     
-Registry Hive: HKEY_LOCAL_MACHINE 
-Registry Path: \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\
+        Registry Hive: HKEY_LOCAL_MACHINE 
+        Registry Path: \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\
 
-Value Name: LegalNoticeText
+        Value Name: LegalNoticeText
 
-Value Type: REG_SZ
-Value: See message text below
+        Value Type: REG_SZ
+        Value: See message text below
 
-* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
-* This system is provided for Government authorized use only.
-* Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
-* Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
-* By using this system, you understand and consent to the following:
+        * This warning banner provides privacy and security notices consistent with 
+        applicable federal laws, directives, and other federal guidance for accessing 
+        this Government system, which includes (1) this computer network, (2) all 
+        computers connected to this network, and (3) all devices and storage media 
+        attached to this network or to a computer on this network.
+        * This system is provided for Government authorized use only.
+        * Unauthorized or improper use of this system is prohibited and may result in 
+        disciplinary action and/or civil and criminal penalties.
+        * Personal use of social media and networking sites on this system is limited 
+        as to not interfere with official work duties and is subject to monitoring.
+        * By using this system, you understand and consent to the following:
 
-- The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
-- Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose'
-    desc 'fix', 'Configure the policy value for Computer Configuration >> Windows Settings >> Security Settings >> Local Policies >> Security Options >> "Interactive Logon: Message text for users attempting to log on" to the following:
+        - The Government may monitor, record, and audit your system usage, including 
+        usage of personal devices and email systems for official duties or to conduct 
+        HHS business. Therefore, you have no reasonable expectation of privacy regarding 
+        any communication or data transiting or stored on this system. At any time, and 
+        for any lawful Government purpose, the government may monitor, intercept, and 
+        search and seize any communication or data transiting or stored on this system.
+        - Any communication or data transiting or stored on this system may be 
+        disclosed or used for any lawful Government purpose'
+    desc 'fix', 'Configure the policy value for Computer Configuration >> 
+         Windows Settings >> Security Settings >> Local Policies >> Security Options >> 
+         "Interactive Logon: Message text for users attempting to log on" to the following:
 
-* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
-* This system is provided for Government authorized use only.
-* Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
-* Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
-* By using this system, you understand and consent to the following:
+         * This warning banner provides privacy and security notices consistent with 
+         applicable federal laws, directives, and other federal guidance for accessing 
+         this Government system, which includes (1) this computer network, (2) all 
+         computers connected to this network, and (3) all devices and storage media 
+         attached to this network or to a computer on this network.
+         * This system is provided for Government authorized use only.
+         * Unauthorized or improper use of this system is prohibited and may result in 
+         disciplinary action and/or civil and criminal penalties.
+         * Personal use of social media and networking sites on this system is limited 
+         as to not interfere with official work duties and is subject to monitoring.
+         * By using this system, you understand and consent to the following:
 
-- The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
-- Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose'
+         - The Government may monitor, record, and audit your system usage, including 
+         usage of personal devices and email systems for official duties or to conduct 
+         HHS business. Therefore, you have no reasonable expectation of privacy 
+         regarding any communication or data transiting or stored on this system. At 
+         any time, and for any lawful Government purpose, the government may monitor, 
+         intercept, and search and seize any communication or data transiting or 
+         stored on this system.
+         - Any communication or data transiting or stored on this system may be 
+         disclosed or used for any lawful Government purpose'
 
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
       it { should have_property 'LegalNoticeText' }
       its('LegalNoticeText') {
-        should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is
-    provided for USG-authorized use only.
+        should eq ["You are accessing a U.S. Government (USG) Information System (IS) 
+                   that is provided for USG-authorized use only.
                
-    By using this IS (which includes any device attached to this IS), you consent
-    to the following conditions:
+                   By using this IS (which includes any device attached to this IS), 
+                   you consent to the following conditions:
 
-    -The USG routinely intercepts and monitors communications on this IS for
-    purposes including, but not limited to, penetration testing, COMSEC monitoring,
-    network operations and defense, personnel misconduct (PM), law enforcement
-    (LE), and counterintelligence (CI) investigations.
+                   -The USG routinely intercepts and monitors communications on this 
+                   IS for purposes including, but not limited to, penetration testing, 
+                   COMSEC monitoring, network operations and defense, personnel 
+                   misconduct (PM), law enforcement (LE), and counterintelligence (CI) 
+                   investigations.
 
-    -At any time, the USG may inspect and seize data stored on this IS.
+                   -At any time, the USG may inspect and seize data stored on this IS.
 
-    -Communications using, or data stored on, this IS are not private, are subject
-    to routine monitoring, interception, and search, and may be disclosed or used
-    for any USG-authorized purpose.
+                   -Communications using, or data stored on, this IS are not private, 
+                   are subject to routine monitoring, interception, and search, and 
+                   may be disclosed or used for any USG-authorized purpose.
 
-    -This IS includes security measures (e.g., authentication and access controls)
-    to protect USG interests--not for your personal benefit or privacy.
+                   -This IS includes security measures (e.g., authentication and 
+                   access controls) to protect USG interests--not for your personal 
+                   benefit or privacy.
 
-    -Notwithstanding the above, using this IS does not constitute consent to PM, LE
-    or CI investigative searching or monitoring of the content of privileged
-    communications, or work product, related to personal representation or services
-    by attorneys, psychotherapists, or clergy, and their assistants.  Such
-    communications and work product are private and confidential.  See User
-    Agreement for details."]
-    }
-  end
+                   -Notwithstanding the above, using this IS does not constitute consent 
+                   to PM, LE or CI investigative searching or monitoring of the content 
+                   of privileged communications, or work product, related to personal 
+                   representation or services by attorneys, psychotherapists, or clergy, 
+                   and their assistants.  Such communications and work product are 
+                   private and confidential.  See User Agreement for details."]
+      }
+    end
     
     describe 'The required legal notice' do
       subject { registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeText }
       it {
-        should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+        should eq ["You are accessing a U.S. Government (USG) Information System (IS) that 
+                   is provided for USG-authorized use only.
 
-    By using this IS (which includes any device attached to this IS), you consent
-    to the following conditions:
+                   By using this IS (which includes any device attached to this IS), 
+                   you consent to the following conditions:
 
-    -The USG routinely intercepts and monitors communications on this IS for
-    purposes including, but not limited to, penetration testing, COMSEC monitoring,
-    network operations and defense, personnel misconduct (PM), law enforcement
-    (LE), and counterintelligence (CI) investigations.
+                   -The USG routinely intercepts and monitors communications on this IS 
+                   for purposes including, but not limited to, penetration testing, COMSEC 
+                   monitoring, network operations and defense, personnel misconduct (PM), 
+                   law enforcement (LE), and counterintelligence (CI) investigations.
 
-    -At any time, the USG may inspect and seize data stored on this IS.
+                   -At any time, the USG may inspect and seize data stored on this IS.
 
-    -Communications using, or data stored on, this IS are not private, are subject
-    to routine monitoring, interception, and search, and may be disclosed or used
-    for any USG-authorized purpose.
- -This IS includes security measures (e.g., authentication and access controls)
-    to protect USG interests--not for your personal benefit or privacy.
+                   -Communications using, or data stored on, this IS are not private, 
+                   are subject to routine monitoring, interception, and search, and may 
+                   be disclosed or used for any USG-authorized purpose.
+                   
+                   -This IS includes security measures (e.g., authentication and access 
+                   controls) to protect USG interests--not for your personal benefit or 
+                   privacy.
 
-    -Notwithstanding the above, using this IS does not constitute consent to PM, LE
-    or CI investigative searching or monitoring of the content of privileged
-    communications, or work product, related to personal representation or services
-    by attorneys, psychotherapists, or clergy, and their assistants.  Such
-    communications and work product are private and confidential.  See User
-    Agreement for details."]
-    }
+                   -Notwithstanding the above, using this IS does not constitute consent 
+                   to PM, LE or CI investigative searching or monitoring of the content 
+                   of privileged communications, or work product, related to personal 
+                   representation or services by attorneys, psychotherapists, or clergy, 
+                   and their assistants.  Such communications and work product are 
+                   private and confidential.  See User Agreement for details."]
+      }
     end
   end
 
@@ -192,7 +225,8 @@ Value: See message text below
     desc 'fix', 'Regularly review accounts to determine if they are still active. 
     Disable or delete any active accounts that have not been used in the last 30 days.'
 
-    users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
+    users = command("net user | 
+                    Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
     get_sids = []
     get_names = []
@@ -200,7 +234,8 @@ Value: See message text below
     inactive_accounts = []
     
     users.each do |user|
-      get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' sid',' Disabled | 
+      get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' 
+                          sid',' Disabled | 
       Findstr /v SID").stdout.strip
       get_last = get_sids[get_sids.length-3, 3]
       get_disabled = get_sids[0, 4]
@@ -344,3 +379,4 @@ Value: See message text below
       its('MinimumPasswordLength') { should be >= 15 }
     end
   end
+end
