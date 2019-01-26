@@ -22,7 +22,8 @@ bundle install
 inspec exec ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay -t winrm://$winhostip --user 'Administrator' --password=Pa55w0rd --reporter cli json:windows-memberserver-overlay-results.json
 ```
 
-For every successive run, in order to always have the latest version of the overlay and its dependent baseline profiles:
+For every successive run, follow these instructions to always have the latest version:
+
 ```
 cd profiles/cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 git pull
