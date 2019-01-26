@@ -1,138 +1,64 @@
-# cms-ars3.1-microsoft-windows_2012r2-memberserver-stig-overlay
-CMS ARS 3.1 Overlay InSpec Validation Profile for the Microsoft Windows 2012r2 Member Server DISA STIG Benchmark.
+# cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 
-This InSpec Profile is based on the Microsoft Windows 2012r2 Member Server DISA STIG.
+InSpec profile overlay to validate the secure configuration of Microsoft Windows 2012R2 Member Server against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) STIG Version 2 Release 14 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html).
 
-## Description
+## Getting Started  
+It is intended and recommended that InSpec and this profile overlay be run from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __winrm__.
 
-This [InSpec](https://github.com/chef/inspec) compliance profile validates the security settings in the Microsoft Windows 2012r2 Member Server DISA STIG in an automated way. The values of the security settings conform to CMS ARS 3.1.
+__For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
-InSpec is an open-source run-time framework and rule language used to specify compliance, security, and policy requirements for testing any node in your infrastructure.
+Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
 
-## Requirements
-
-- [InSpec](http://inspec.io/) at least version 2.x
-
-## Get started
-
-### Installing InSpec 
-
-### Install InSpec on Unix/Linux/Mac
-
-#### Option 1 Install InSpec (Package installer)
-First things first: We need InSpec on our workstation. For production and standalone environments, I recommend the ChefDK package, since it gives you Chef + Test-Kitchen + InSpec. You can download the package from [https://downloads.chef.io/chefdk](https://downloads.chef.io/chefdk).
-
-#### Option 2 Install InSpec (Terminal install)
-Another option is to install InSpec via a command line script:
+## Running This Overlay
+When the __"runner"__ host uses this profile overlay for the first time, follow these instructions: 
 
 ```
-$ curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -channel stable -P chefdk
+mkdir profiles
+cd profiles
+git clone https://github.cms.gov/ispg-dev/cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay.git
+git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline.git
+cd cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
+bundle install
+inspec exec ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay -t winrm://$winhostip --user 'Administrator' --password=Pa55w0rd --reporter cli json:windows-memberserver-overlay-results.json
 ```
 
-#### After Install
-Once InSpec is installed, run `inspec version` to verify that the installation was successful.
-
-
-### Install InSpec on Windows
-
-#### Option 1 (package installer)
-First things first: We need InSpec on our workstation. For production and standalone environments, I recommend the ChefDK package, since it gives you Chef + Test-Kitchen + InSpec. You can download the package from [https://downloads.chef.io/chefdk](https://downloads.chef.io/chefdk).
-
-#### Option 2 (command line)
-Another option is to install InSpec via a Powershell script:
-
+For every successive run, in order to always have the latest version of the overlay and its dependent baseline profiles:
 ```
-$ . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -channel stable -project chefdk
+cd profiles/cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
+git pull
+cd ../microsoft-windows-2012r2-memberserver-stig-baseline
+git pull
+cd ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
+bundle install
+inspec exec ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay -t winrm://$winhostip --user 'Administrator' --password=Pa55w0rd --reporter cli json:windows-memberserver-overlay-results.json
 ```
 
-#### After Install
-Once InSpec is installed, run `inspec version` to verify that the installation was successful.
-  
-### Get the Microsoft Windows 2012r2 Member Server Baseline
+## Viewing the JSON Results
 
-You will need to download the InSpec Profile to your `runner` system. You can do this via `git` or the GitHub Web interface, etc.
+The JSON results output file can be loaded into __[heimdall-lite](https://mitre.github.io/heimdall-lite/)__ for a user-interactive, graphical view of the InSpec results. 
 
-  a. `git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline`, or 
-  
-  b. Save a Zip or tar.gz copy of the master branch from the `Clone or Download` button of this project
+The JSON InSpec results file may also be loaded into a __full heimdall server__, allowing for additional functionality such as to store and compare multiple profile runs.
 
-### Setting up dependencies in your Ruby and InSpec Environments
+## Authors
+* Eugene Aronne
+* Danny Haynes
 
-The profile uses Bundler to manage needed dependencies - so you will need to installed the needed gems via bundler before you run the profile. Change directories to your your cloned inspec profile then do a `bundle install`. 
+## Special Thanks
+* Alicia Sturtevant
 
-  a. `cd rsa-archer-security-configuration-guide-baseline` 
-  
-  b. `bundle install`
-
-## Credentials
-
-The profile uses RSA Archer REST API connection parameters as `attributes` specified below
-
-- url: Base url of the RSA Archer application, (REQUIRED) <br>
-`url: 'https://urltoarcherapp.org/'`
-
-- instancename: Name of the RSA Archer instance (REQUIRED)<br>
-`instancename: archerapp`
-
-- user_domain: RSA Archer User Domain (OPTIONAL)<br>
-`user_domain: ''`
-
-- username: REST API User with at least `Read-Only` access to `Access Control` attributes on archer (REQUIRED)<br>
-`username: restapiuser`
-
-- password: Password of the users is pulled from the ENV <br> Export the password to `ARCHER_API_PASSWORD` (REQUIRED)<br>
-`password: <%=ENV['ARCHER_API_PASSWORD']%>`
-
-- ssl_verify: Set this to `false` if Archer App uses self-signed certs<br>
-`ssl_verify: true`
-
-
-## Usage
-
-InSpec makes it easy to run your tests wherever you need. More options listed here: [InSpec cli](http://inspec.io/docs/reference/cli/)
-
-```
-# Clone Inspec Profile
-$ git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline
-
-# Install Gems
-$ bundle install
-
-# Update the attributes specified in `inspec.yml` as required
-
-# Set required ENV variables
-$ export ARCHER_API_PASSWORD=s3cr3tpassw0rd
-
-# To run profile locally and directly from Github with cli & json output 
-$ inspec exec /path/to/profile --reporter cli json:archer-results.json
-```
-
-### Run individual controls
-
-In order to verify individual controls, just provide the control ids to InSpec:
-
-```
-$ inspec exec /path/to/profile --controls rsa-archer-1.1
-```
-
-### Authors
-
-- Author: Alicia Sturtevant
+## Contributing and Getting Help
+To report a bug or feature request, please open an [issue](https://github.com/ejaronne/readmes/issues/new).
 
 ## License
-This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
+This is licensed under the [Apache 2.0](https://github.com/mitre/project/blob/master/LICENSE.md) license. 
 
-## NOTICE
-© 2018 The MITRE Corporation.
+### NOTICE  
 
-Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
-
-## NOTICE
-This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.
+This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.  
 
 No other use other than that granted to the U. S. Government, or to those acting on behalf of the U. S. Government under that Clause is authorized without the express written permission of The MITRE Corporation.
 
-For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA 22102-7539, (703) 983-6000.
+For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA  22102-7539, (703) 983-6000.
 
 ## NOTICE
 DISA STIGs are published by DISA IASE, see: https://iase.disa.mil/Pages/privacy_policy.aspx
