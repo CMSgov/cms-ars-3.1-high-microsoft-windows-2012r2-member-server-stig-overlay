@@ -9,8 +9,8 @@ version: 0.1.0
 
 depends:
 - name: microsoft-windows-2012r2-memberserver-stig-baseline
-  git: https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline.git
-  branch: master
+  path: ../microsoft-windows-2012r2-memberserver-stig-baseline
+ 
 
 attributes:
   - name: shared_accounts
