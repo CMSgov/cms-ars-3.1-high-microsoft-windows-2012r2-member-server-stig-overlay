@@ -51,7 +51,7 @@ The JSON InSpec results file may also be loaded into a __full heimdall server__,
 To report a bug or feature request, please open an [issue](https://github.cms.gov/ispg-dev/cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay/issues/new).
 
 ## License
-This is licensed under the [Apache 2.0](https://github.com/mitre/project/blob/master/LICENSE.md) license. 
+This is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license. 
 
 ### NOTICE  
 
