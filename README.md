@@ -20,7 +20,7 @@ git clone https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-ba
 cd cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 bundle install
 cd ..
-inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay --target=winrm://<your-target-host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path-to-your-output-file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay --target=winrm://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
@@ -33,7 +33,7 @@ git pull
 cd ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 bundle install
 cd ..
-inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay --target=winrm://<your-target-host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path-to-your-output-file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay --target=winrm://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 ## Viewing the JSON Results
