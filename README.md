@@ -1,6 +1,6 @@
 # cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 
-InSpec profile overlay to validate the secure configuration of Microsoft Windows 2012R2 Member Server against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Microsoft Windows 2012R2 Member Server STIG Version 2 Release 14 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html).
+InSpec profile overlay to validate the secure configuration of Microsoft Windows 2012R2 Member Server against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Microsoft Windows 2012R2 Member Server STIG Version 2 Release 14 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categories as High.
 
 ## Getting Started  
 It is intended and recommended that InSpec and this profile overlay be run from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __winrm__.
