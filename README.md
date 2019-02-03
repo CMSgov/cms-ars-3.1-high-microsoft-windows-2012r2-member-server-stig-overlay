@@ -26,11 +26,10 @@ inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
 
 ```
-cd profiles/cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
-git pull
-cd ../microsoft-windows-2012r2-memberserver-stig-baseline
+cd profiles/microsoft-windows-2012r2-memberserver-stig-baseline
 git pull
 cd ../cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
+git pull
 bundle install
 cd ..
 inspec exec cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay --target=winrm://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
