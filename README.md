@@ -19,7 +19,7 @@ shared_accounts: []
 backup_operators: []
 
 # description: 'List of authorized users in the local Administrators group'
-administrators: []
+administrators: ''
 
 # description: 'List of authorized users in the local Administrators domain group'
 administrators_domain: []
