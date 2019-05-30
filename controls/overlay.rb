@@ -1008,7 +1008,7 @@ include_controls 'microsoft-windows-2012r2-memberserver-stig-baseline' do
     end
   end
 
-  control 'V-57653' do
+  control 'V-57655' do
     title 'Windows 2012 / 2012 R2 must automatically remove or disable emergency 
           accounts after the crisis is resolved or within 24 hours.'
     desc 'check', 'Determine if emergency administrator accounts are used and 
