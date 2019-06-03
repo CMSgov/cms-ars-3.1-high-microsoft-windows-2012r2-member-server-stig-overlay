@@ -1,10 +1,10 @@
 name: cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
-title: 
+title: .
 maintainer: CMS InSpec Dev team
-copyright: 
+copyright: . 
 copyright_email: 
 license: Apache-2.0
-summary: 
+summary: .
 version: 0.1.0
 
 depends:
