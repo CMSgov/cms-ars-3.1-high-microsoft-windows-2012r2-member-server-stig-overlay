@@ -24,8 +24,8 @@ attributes:
 
   - name: administrators
     type: string
-    description: 'List of authorized users in the local Administrators group (e.g., ''Admn'')'
-    default: 'Admn'
+    description: 'List of authorized users in the local Administrators group (e.g., ['Admin', 'Domain\Joe'] )'
+    default: []
 
   - name: administrators_domain
     type: array
