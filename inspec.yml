@@ -1,59 +1,70 @@
 name: cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
-title: .
+title: cms-ars-3.1-high-microsoft-windows-2012r2-member-server-stig-overlay
 maintainer: CMS InSpec Dev team
-copyright: . 
+copyright: 
 copyright_email: 
 license: Apache-2.0
-summary: .
-version: 0.1.0
+summary: "CMS ARS 3.1 High Overlay InSpec Validation Profile for Windows Server 2012R2 STIG"
+version: 0.1.1
+inspec_version: ">= 4.0"
 
 depends:
 - name: microsoft-windows-2012r2-memberserver-stig-baseline
-  path: ../microsoft-windows-2012r2-memberserver-stig-baseline
+  url: https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline/archive/master.tar.gz
  
-attributes:
+inputs:
   - name: shared_accounts
     type: array
     description: 'List of shared accounts on the system'
-    default: []
+    value: []
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
 
   - name: backup_operators
     type: array
     description: 'List of authorized users in the Backup Operators Group'
-    default: []
+    value: []
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
 
   - name: administrators
     type: array
     description: 'List of authorized users in the local Administrators group (e.g., [''Admin'', ''Domain\Joe''] )'
-    default: []
+    value: []
+    sensitive: true
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
 
   - name: administrators_domain
     type: array
     description: 'List of authorized users in the local Administrators domain group'
-    default: []
+    value: []
+    sensitive: true
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
 
   - name: temp_account
     type: array
     description: 'List of temporary accounts on the system'
-    default: []
+    value: []
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
 
   - name: emergency_account
     type: array
     description: 'List of emergency accounts on the system'
-    default: []
+    value: []
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
     
   - name: LegalNoticeCaption
     type: string
     description: 'Legal caption text for banners'
-    default: '-= WARNING =- -= WARNING =- -= WARNING =-'
+    value: '-= WARNING =- -= WARNING =- -= WARNING =-'
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
     
   - name: LegalNoticeText
     type: string
     description: 'Legal notice text for banners'
-    default: '* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+    value: '* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
               *     This system is provided for Government-authorized use only.
               *     Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
               *     Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
               *     By using this system, you understand and consent to the following:
               -     The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
               -     Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose.'
+    profile: microsoft-windows-2012r2-memberserver-stig-baseline
